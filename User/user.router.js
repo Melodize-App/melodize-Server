@@ -1,29 +1,12 @@
 
 const express = require('express');
 const router = express.Router();
-const userService=require('./user.service');
+const userService = require('./user.service');
 const auth = require('./auth');
 const { authenticateToken } = require('./auth');
 
-
-
-// router.get('/', authenticateToken, async (req, res) => {
-//     try {
-//         const likedSongs = await service.getLiked();
-//         res.send({ 
-//             message: "added successfully", // הודעה למשתמש
-//             songs: likedSongs // שליחת רשימת השירים
-//         });
-//     } catch (error) {
-//         res.status(500).send({ message: "error has occured", error: error.message });
-//     }
-// });
-
-
-
-
 //get user by email
-router.get('/:id',   authenticateToken, async (req, res) => {
+router.get('/:id', authenticateToken, async (req, res) => {
     try {
         const user = await userService.getUserByEmail(req.params.id);
         if (user) {
@@ -35,9 +18,6 @@ router.get('/:id',   authenticateToken, async (req, res) => {
         res.status(404).send(error);
     }
 });
-
-
-
 
 //Add new user
 
@@ -53,19 +33,15 @@ router.post('/', async (req, res) => {
     }
 });
 
-
-
-
-
 //UPDATE user
 
-router.put('/',  authenticateToken, async (req, res) => {
+router.put('/', authenticateToken, async (req, res) => {
     try {
         // console.log(req.body);
 
 
-        const { email, ...updateData } = req.body; // הפרדת האימייל משאר הנתונים לעדכון
-        const updatedUser = await userService.updateUser(email, updateData); // שליחת האימייל והנתונים לעדכון ל-service
+        const { email, ...updateData } = req.body;
+        const updatedUser = await userService.updateUser(email, updateData);
         if (updatedUser) {
             res.send(updatedUser);
         }
@@ -74,30 +50,13 @@ router.put('/',  authenticateToken, async (req, res) => {
     }
 });
 
-
-
-
 router.post('/login', async (req, res) => {
     try {
-        // קוראים לפונקציית login מקובץ ה-auth עם נתוני הגוף מהבקשה
         const token = await auth.login(req.body.email, req.body.password);
-        // מחזירים את הטוקן בתשובה
-        res.json({ token });   
+        res.json({ token });
     } catch (error) {
-        // במקרה של שגיאה (אימייל לא קיים במערכת, סיסמה שגויה, וכו'), מחזירים 401 Unauthorized
         res.status(401).send({ error: 'Login failed. Check authentication credentials' });
     }
 });
 
-
 module.exports = router;
-
-
-
-
-
-
-
-
-
-
