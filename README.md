@@ -3,6 +3,7 @@
 ---
 
 # Melodize Server
+Melodize is a music streaming application that leverages the YouTube API to provide a seamless music listening experience. Users can save their favorite songs, search for new music, and choose to either watch music videos or listen to the audio. The client side of the application is built with React.js and styled with custom CSS, emphasizing a clean design and superior UX/UI.
 
 The server side of Melodize is built with Express.js and uses Mongoose for MongoDB interactions. It handles user authentication with JWT and manages the backend API for the music streaming application.
 
