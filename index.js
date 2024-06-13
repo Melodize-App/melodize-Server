@@ -16,6 +16,12 @@ app.use('/liked', likedRouter);
 const topRouter = require('./Top/top.router');
 app.use('/top', topRouter);
 
+const craftedRouter = require('./Crafted/Crafted.router');
+app.use('/crafted', craftedRouter);
+
+const trendingdRouter = require('./Trending/Trending.router');
+app.use('/trending', trendingdRouter);
+
 const userRouter = require('./User/user.router')
 app.use("/user", userRouter)
 
