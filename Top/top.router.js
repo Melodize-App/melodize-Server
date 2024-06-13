@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const topService=require('./top.services')
+const topService = require('./top.services')
 const { authenticateToken } = require('../User/auth');
 
 
@@ -16,9 +16,7 @@ router.post('/', authenticateToken, async (req, res) => {
     }
 });
 
-
 //GET TOP PLAYED SONGS
-
 router.get('/:userId', async (req, res) => {
     try {
         const userId = req.params.userId;
@@ -29,7 +27,5 @@ router.get('/:userId', async (req, res) => {
         res.status(500).send({ message: "error has occurred", error: error.message });
     }
 });
-
-
 
 module.exports = router;
