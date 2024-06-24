@@ -7,7 +7,11 @@ const db = require("./db");
 db.connect();
 
 const cors = require('cors');
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://flourishing-dusk-595691.netlify.app'],
+  credentials: true
+}));
+
 app.use(express.json());
 
 const likedRouter = require('./Liked/liked.route');
