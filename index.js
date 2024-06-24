@@ -14,6 +14,10 @@ app.use(cors({
 
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    res.send('Hello, world!');
+});
+
 const likedRouter = require('./Liked/liked.route');
 app.use('/liked', likedRouter);
 
