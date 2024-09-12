@@ -9,7 +9,7 @@ const cors = require('cors');
 
 // Apply CORS middleware before defining routes
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://flourishing-dusk-595691.netlify.app'],
+  origin: ['http://localhost:5173', 'https://melodize.vercel.app/'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
